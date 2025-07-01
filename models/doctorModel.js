@@ -16,6 +16,17 @@ const getDoctorByEmail = asyncHandler(async (email) => {
   return result.recordset[0] || null;
 });
 
+const getalldoctors = asyncHandler(async () => {
+  const pool = await poolPromise;
+  const result = await pool.request()
+  .query(
+    `SELECT * FROM Doctors`
+  );
+  console.log(typeof result.recordset[1]);
+// Output: 'object'
+
+  return result.recordset;
+})
 
 // Helper function to create doctor in DB
 const createDoctor = async (doctorData) => {
@@ -74,4 +85,4 @@ const createDoctor = async (doctorData) => {
 };
 
 
-module.exports = {getDoctorByEmail, createDoctor}
+module.exports = {getDoctorByEmail, createDoctor, getalldoctors}
