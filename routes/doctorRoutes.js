@@ -1,0 +1,12 @@
+const express = require("express");
+const router = express.Router();
+
+const {registerDoctor, loginDoctor, currentDoctor} = require("../controllers/doctorController");
+const validateToken = require("../middleware/validateTokenHandler");
+
+router.route("/register").post(registerDoctor);
+router.route("/login").post(loginDoctor);
+router.get("/current",validateToken,currentDoctor)
+
+
+module.exports = router;
