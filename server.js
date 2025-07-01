@@ -136,6 +136,20 @@ wss.on('connection', (ws, req) => {
 // use our custom middleware
 app.use(errorHandler)
 
+// Add this to server.js
+async function testConnection() {
+  try {
+    const pool = await poolPromise;
+    const result = await pool.query`SELECT @@VERSION`;
+    console.log("SQL Server version:", result.recordset[0][""]);
+  } catch (err) {
+    console.error("Connection test failed:", err);
+  }
+}
+
+testConnection();
+
+
 // Start the server
 server.listen(port, '0.0.0.0', () => {
   console.log(`HTTP and WebSocket server running on port ${port}`);

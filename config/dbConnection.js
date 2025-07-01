@@ -6,10 +6,9 @@ const dbconfig = {
     server: "gss-server.database.windows.net",
     database: "gss",
     options: {
-        trustServerCertificate: true,
-        trustedConnection: false,
-        enableArithAbort: true,
-        instancename: "SQLEXPRESS"
+        encrypt: true, // REQUIRED for Azure
+        trustServerCertificate: false, // Recommended for security
+        enableArithAbort: true
     },
     port: 1433
 }
