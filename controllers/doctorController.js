@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const {getDoctorByEmail, createDoctor, getalldoctors} = require("../models/doctorModel");
-const { all } = require("../routes/userRoutes");
+
 
 //@desc Register the doctor
 //@route POST /api/users/register
