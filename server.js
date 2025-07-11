@@ -147,7 +147,12 @@ async function testConnection() {
   }
 }
 
-testConnection();
+(async () => {
+  console.log('Starting SQL connection test...');
+  await testConnection();
+  console.log('SQL connection test finished.');
+})();
+
 
 
 // Start the server
