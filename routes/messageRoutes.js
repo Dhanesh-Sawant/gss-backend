@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {getMessagesBetweenDoctorAndPatient} = require("../controllers/messageController");
+const {getMessageHistory} = require("../controllers/messageController");
 
 const validateToken = require("../middleware/validateTokenHandler");
 
-router.get("/",validateToken,getMessagesBetweenDoctorAndPatient)
 
+router.get("/:senderId/:receiverId", validateToken,getMessageHistory);
 
 module.exports = router;

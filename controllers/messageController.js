@@ -1,21 +1,24 @@
-const MessageService = require('../services/messageService');
+const { sql, poolPromise } = require("../config/dbConnection");
 
-const getMessagesBetweenDoctorAndPatient = async (req, res) => {
+
+// REST API for message history
+exports.getMessageHistory = async (req, res) => {
   try {
-    const doctorId = parseInt(req.query.doctor_id);
-    const patientId = parseInt(req.query.patient_id);
-    
-    if (isNaN(doctorId) || isNaN(patientId)) {
-      return res.status(400).json({ error: 'Invalid doctor or patient ID' });
-    }
-
-    const messages = await MessageService.getMessagesBetweenDoctorAndPatient(doctorId, patientId);
-    res.json(messages);
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('sender', sql.Int, req.params.senderId)
+      .input('receiver', sql.Int, req.params.receiverId)
+      .query(`
+        SELECT id, sender_id, receiver_id, content, timestamp 
+        FROM Messages 
+        WHERE (sender_id = @sender AND receiver_id = @receiver) 
+           OR (sender_id = @receiver AND receiver_id = @sender)
+        ORDER BY timestamp ASC
+      `);
+    res.json(result.recordset);
   } catch (err) {
-    console.error('Error in getMessagesBetweenDoctorAndPatient:', err);
+    console.error('Error fetching messages:', err);
     res.status(500).json({ error: err.message });
   }
 };
 
-
-module.exports = {getMessagesBetweenDoctorAndPatient}
