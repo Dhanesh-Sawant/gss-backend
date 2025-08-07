@@ -37,14 +37,13 @@ const server = http.createServer(app);
 // WebSocket
 websocketInit(server);
 
-// DB Connection Test
-testConnection();
-
-
 // Start the server
 server.listen(port, '0.0.0.0', () => {
   console.log(`HTTP and WebSocket server running on port ${port}`);
 });
+
+// DB Connection Test
+await testConnection();
 
 // ------------------------
 
