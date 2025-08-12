@@ -37,19 +37,10 @@ const server = http.createServer(app);
 // WebSocket
 websocketInit(server);
 
-// Start the server
-server.listen(port, '0.0.0.0', () => {
-  console.log(`HTTP and WebSocket server running on port ${port}`);
-});
-
-// DB Connection Test
-await testConnection();
-
-// ------------------------
 
 
-// Add this to server.js
-async function testConnection() {
+// Add this to server.cjs
+async function testConnection(){
   try {
     const pool = await poolPromise;
     const result = await pool.query`SELECT @@VERSION`;
@@ -58,4 +49,17 @@ async function testConnection() {
     console.error("Connection test failed:", err);
   }
 }
+
+async function startServer() {
+  try {
+    await testConnection();
+    server.listen(port, '0.0.0.0', () => {
+      console.log(`HTTP and WebSocket server running on port ${port}`);
+    });
+  } catch (err) {
+    console.error("Error during startup:", err);
+  }
+}
+
+startServer();
 
