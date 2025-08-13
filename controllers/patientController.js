@@ -1,7 +1,7 @@
-const asyncHandler = require("express-async-handler")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const {createPatient, getPatientList} = require("../models/patientModel")
+import asyncHandler from "express-async-handler";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { createPatient, getPatientList } from "../models/patientModel.js";
 
 //@desc add new patient
 //@route POST /api/patients/newPatient
@@ -79,4 +79,4 @@ const getPatients = asyncHandler ( async (req,res) => {
 
 });
 
-module.exports = {newPatient,getPatients};
+export {newPatient,getPatients};

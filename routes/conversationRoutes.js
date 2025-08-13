@@ -1,14 +1,17 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const {getUserMostRecentConversations, getDoctorMostRecentConversations, addConversation} = require("../controllers/conversationController");
+import { 
+  getUserMostRecentConversations, 
+  getDoctorMostRecentConversations, 
+  addConversation 
+} from "../controllers/conversationController.js";
 
-const validateToken = require("../middleware/validateTokenHandler");
+import validateToken from "../middleware/validateTokenHandler.js";
 
 router.post("/addConversation",validateToken,addConversation)
 
 router.get("/patient/:userId",validateToken,getUserMostRecentConversations)
 router.get("/doctor/:doctorId",validateToken,getDoctorMostRecentConversations)
 
-
-module.exports = router;
+export default router;

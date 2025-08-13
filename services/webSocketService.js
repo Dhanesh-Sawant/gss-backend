@@ -1,11 +1,11 @@
-const { sql, poolPromise } = require('../config/dbConnection');
-
-const WebSocket = require("ws");
+import { sql, poolPromise } from '../config/dbConnection.js';
+import { WebSocketServer } from "ws";
+import WebSocket from "ws";
 
 const clients = new Map();
 
-module.exports = function websocketInit(server) {
-  const wss = new WebSocket.Server({ server });
+export default function websocketInit(server) {
+  const wss = new WebSocketServer({ server });
 
   wss.on('connection', (ws, req) => {
   console.log('New WebSocket client connected');

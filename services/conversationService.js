@@ -1,4 +1,4 @@
-const { sql, poolPromise } = require('../config/dbConnection');
+import{ sql, poolPromise } from '../config/dbConnection.js';
 
 class ConversationService {
 
@@ -156,4 +156,4 @@ class ConversationService {
 
 }
 
-module.exports = new ConversationService();
+export default new ConversationService();

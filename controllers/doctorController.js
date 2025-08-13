@@ -1,7 +1,7 @@
-const asyncHandler = require("express-async-handler")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const {getDoctorByEmail, createDoctor, getalldoctors} = require("../models/doctorModel");
+import asyncHandler from "express-async-handler";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { getDoctorByEmail, createDoctor, getalldoctors } from "../models/doctorModel.js";
 
 
 //@desc Register the doctor
@@ -186,4 +186,4 @@ const getAllDoctors = asyncHandler (async (req,res)=>{
   res.json({"response": alldoctors});
 })
 
-module.exports = {registerDoctor, loginDoctor, currentDoctor, getAllDoctors}
+export {registerDoctor, loginDoctor, currentDoctor, getAllDoctors}

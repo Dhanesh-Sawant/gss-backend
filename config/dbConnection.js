@@ -1,4 +1,4 @@
-const sql = require("mssql")
+import sql from "mssql"
 
 const dbconfig = {
     user: "gssadminlogin",
@@ -22,11 +22,4 @@ const poolPromise = new sql.ConnectionPool(dbconfig)
   })
   .catch(err => console.error('Database Connection Failed! Bad Config: ', err));
 
-module.exports = {
-  sql, poolPromise
-};
-
-// const data = pool.request().query("SELECT * FROM users");
-//     data.then(result=>{
-//         res.status(200).send(result.recordset);
-//     });
+export { sql, poolPromise };

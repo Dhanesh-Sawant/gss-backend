@@ -1,8 +1,8 @@
-const { sql, poolPromise } = require("../config/dbConnection");
+import { sql, poolPromise } from "../config/dbConnection.js";
 
 
 // REST API for message history
-exports.getMessageHistory = async (req, res) => {
+export const getMessageHistory = async (req, res) => {
   try {
     const pool = await poolPromise;
     const result = await pool.request()

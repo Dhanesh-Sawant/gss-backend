@@ -1,7 +1,7 @@
 // models/userModel.js
-const asyncHandler = require("express-async-handler")
-const { sql, poolPromise } = require('../config/dbConnection');
-const { constants } = require("../constants");
+import asyncHandler from "express-async-handler";
+import { sql, poolPromise } from "../config/dbConnection.js";
+import { constants } from "../constants.js";
 
 const getAllUsers = asyncHandler( async () => {
   const pool = await poolPromise;
@@ -49,7 +49,7 @@ const createUser = asyncHandler(async (username,email,password)=>{
     }
 });
 
-module.exports = {
+export {
   getAllUsers,
   getUserByEmail,
   createUser

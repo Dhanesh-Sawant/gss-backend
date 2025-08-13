@@ -1,7 +1,7 @@
-const asyncHandler = require("express-async-handler")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const {getAllUsers, createUser, getUserByEmail} = require("../models/userModel")
+import asyncHandler from "express-async-handler";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { getAllUsers, createUser, getUserByEmail } from "../models/userModel.js";
 
 //@desc Register the user
 //@route GET /api/users/register
@@ -108,4 +108,4 @@ const currentUser = asyncHandler ( async (req,res) => {
 });
 
 
-module.exports = {registerUser, loginUser, currentUser}
+export {registerUser, loginUser, currentUser}

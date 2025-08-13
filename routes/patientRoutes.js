@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const {newPatient,getPatients} = require("../controllers/patientController");
-const validateToken = require("../middleware/validateTokenHandler");
+import { newPatient, getPatients } from "../controllers/patientController.js";
+import validateToken from "../middleware/validateTokenHandler.js";
 
 router.use(validateToken)
 
@@ -10,4 +10,4 @@ router.route("/newPatient").post(newPatient);
 router.route("/getPatients").post(getPatients);
 
 
-module.exports = router;
+export default router;

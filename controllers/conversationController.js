@@ -1,4 +1,4 @@
-const conversationService = require('../services/conversationService');
+import conversationService from '../services/conversationService.js';
 
 const addConversation = async (req, res) => {
     try{
@@ -47,4 +47,4 @@ const getDoctorMostRecentConversations = async (req, res) => {
   }
 };
 
-module.exports = {getUserMostRecentConversations, getDoctorMostRecentConversations, addConversation}
+export {getUserMostRecentConversations, getDoctorMostRecentConversations, addConversation}

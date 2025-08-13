@@ -1,7 +1,6 @@
-const asyncHandler = require("express-async-handler")
-const { sql, poolPromise } = require('../config/dbConnection');
-const { constants } = require("../constants");
-
+import asyncHandler from "express-async-handler";
+import { sql, poolPromise } from "../config/dbConnection.js";
+import { constants } from "../constants.js";
 
 const getDoctorByEmail = asyncHandler(async (email) => {
   const pool = await poolPromise;
@@ -85,4 +84,4 @@ const createDoctor = async (doctorData) => {
 };
 
 
-module.exports = {getDoctorByEmail, createDoctor, getalldoctors}
+export {getDoctorByEmail, createDoctor, getalldoctors}

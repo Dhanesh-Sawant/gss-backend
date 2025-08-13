@@ -2,7 +2,7 @@
 // and in json
 // and response in json only
 
-const {constants} = require("../constants")
+import { constants } from "../constants.js";
 
 const errorHandler = (err, req, res, next) => {
     let errorCode = res.statusCode ? res.statusCode : 500
@@ -39,4 +39,4 @@ const errorHandler = (err, req, res, next) => {
     
 };
 
-module.exports = errorHandler;
+export default errorHandler;

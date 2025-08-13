@@ -1,11 +1,9 @@
-const express = require("express");
+import express from "express";
+import { getMessageHistory } from "../controllers/messageController.js";
+import validateToken from "../middleware/validateTokenHandler.js";
+
 const router = express.Router();
-
-const {getMessageHistory} = require("../controllers/messageController");
-
-const validateToken = require("../middleware/validateTokenHandler");
-
 
 router.get("/:senderId/:receiverId", validateToken,getMessageHistory);
 
-module.exports = router;
+export default router;

@@ -1,5 +1,5 @@
-const { sql, poolPromise } = require('../config/dbConnection');
-const { constants } = require("../constants");
+import { sql, poolPromise } from '../config/dbConnection.js';
+import { constants } from '../constants.js';
 
 
 const createPatient = async (user_id, fullname, age, gender, phno, location, medical_history, allergies, curr_medications, emergency_contact_name, emergency_contact_phno) =>{
@@ -91,4 +91,4 @@ const getPatientList = async (user_id) => {
 }
 
 
-module.exports = {createPatient,getPatientList}
+export {createPatient,getPatientList}

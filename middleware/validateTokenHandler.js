@@ -1,6 +1,9 @@
-const asyncHandler = require("express-async-handler")
-const jwt = require("jsonwebtoken")
-const dotenv = require("dotenv").config();
+import asyncHandler from "express-async-handler";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
 
 const validateToken = asyncHandler (async (req,res,next) => {
     let token;
@@ -42,4 +45,4 @@ const validateToken = asyncHandler (async (req,res,next) => {
 });
 
 
-module.exports = validateToken;
+export default validateToken;
