@@ -7,7 +7,7 @@ const dbconfig = {
     database: "gss",
     options: {
         encrypt: true, // REQUIRED for Azure
-        trustServerCertificate: false, // Recommended for security
+        trustServerCertificate: true, // Recommended for security
         enableArithAbort: true
     },
     port: 1433
