@@ -55,6 +55,10 @@ websocketInit(server);
 async function testConnection(){
   try {
     const pool = await poolPromise;
+    if (!pool) {
+      console.error("Pool is undefined – SQL connection not established");
+      return;
+    }
     const result = await pool.query`SELECT @@VERSION`;
     console.log("SQL Server version:", result.recordset[0][""]);
   } catch (err) {

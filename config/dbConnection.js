@@ -1,3 +1,4 @@
+import { request } from "express";
 import sql from "mssql"
 
 const dbconfig = {
@@ -10,7 +11,9 @@ const dbconfig = {
         trustServerCertificate: true, // Recommended for security
         enableArithAbort: true
     },
-    port: 1433
+    port: 1433,
+    connectionTimeout: 30000,
+    requestTimeout: 30000
 }
 
 // Create and connect the pool once, then export the promise
